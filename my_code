@@ -1,27 +1,51 @@
 import time
 
+
 def print_pause(message):
     print(message)
     time.sleep(1)
 
-print_pause("please enter your first number")
-operand1 = float(input("\n"))
-print_pause("please enter your second number")
-operand2 = float(input("\n"))
-print_pause("choose an operator (+ - * /)")
-operator = input("\n")
 
-if operator == '+':
+def add():
     print_pause(f"{operand1} + {operand2} = {operand1 + operand2}")
-elif operator == '-':
+
+
+def sub():
     print_pause(f"{operand1} - {operand2} = {operand1 - operand2}")
-elif operator == '*':
+
+
+def mul():
     print_pause(f"{operand1} * {operand2} = {operand1 * operand2}")
-elif operator == '/':
-    if operand2 == 0:
-        print_pause("Error: division by zero!")
-    else:
+
+
+def div():
+    try:
         print_pause(f"{operand1} / {operand2} = {operand1 / operand2}")
-else:
-    print_pause("Invalid operator!")
-    
+    except ZeroDivisionError:
+        print("Can't divide by zero!!")
+
+
+while True:
+    try:
+        print_pause("please enter your first number")
+        operand1 = float(input("\n"))
+        print_pause("please enter your second number")
+        operand2 = float(input("\n"))
+        print_pause("choose an operator (+ - * /)OR B to Break")
+        operator = input("\n")
+
+        if operator == '+':
+            add()
+        elif operator == '-':
+            sub()
+        elif operator == '*':
+            mul()
+        elif operator == '/':
+            div()
+        elif operator.lower() == 'b':
+            braek
+        else:
+            print_pause("Invalid operator!")
+    except ValueError:
+        print("invalid input")
+        break
